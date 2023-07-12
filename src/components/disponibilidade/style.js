@@ -106,6 +106,8 @@ button{
   
   
 }
-
+#link{
+  width: 100%;
+}
 
 `;

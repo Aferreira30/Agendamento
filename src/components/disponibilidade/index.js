@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
-import { Container,ContainerDisp,FormDisp } from './style'
-import ImgPreview from './previewImg'
+import React, { useState } from 'react';
+import { Container,ContainerDisp,FormDisp } from './style';
+import ImgPreview from './previewImg';
+import {Link} from "react-router-dom";
 
 export default function Disponibilidade() {
   const [text,setText]=useState("");
@@ -13,7 +14,7 @@ export default function Disponibilidade() {
     );
   }
   function SubmitText(e){
-  e.preventDefault();
+
     setText({sobre:text.sobre})
     console.log(text)
   }
@@ -48,7 +49,9 @@ export default function Disponibilidade() {
         <p>Sobre você</p>
         <textarea  onChange={handleTextChange}/>
        <p className='descri'>Fale um pouco sobre você. Isto será exibido em sua página pessoal.</p>
+       <Link to="/agendamento" id='link'>
         <button type='submit' onClick={SubmitText}>Finalizar</button>
+       </Link>
 
       </FormDisp>
     </Container>
