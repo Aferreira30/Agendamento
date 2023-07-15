@@ -32,10 +32,13 @@ li{
     span{
       cursor: pointer;
       display: block;
-      width: 24px;
+      width: 26px;
       height: 24px;
       border-radius: 4px;
-      background: ${({theme})=>theme.colors.green[600]};
+      background: ${({theme})=>theme.colors.gray[900]};
+      
+    }
+    .fotoChk{
       
     }
 

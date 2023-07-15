@@ -8,28 +8,30 @@ export default function Quaselá() {
 const [name, setName] = useState(
  [ {
     dia:"Segunda-feira",
-
+    id:1
   },  {
     dia:"Terça-feira",
-
+    id:2
   },  {
     dia:"Quarta-feira",
-  
+    id:3
   },  {
     dia:"Quinta-feira",
-  
+    id:4
   },  {
     dia:"Sexta-feira",
-
+    id:5
   },  {
     dia:"Sábado",
-
+    id:6
   },  {
     dia:"Domingo",
+    id:7
   },]
 )
 
 const [data, setData]=useState([{}])
+
 
 const [horainicio,setHorainicio]=useState([{
   hora_inicio:0
@@ -38,10 +40,10 @@ const [ horafim,setHorafim]=useState([{
   hora_fim:0
 }]);
 
-
 function HandleSubmit(e){
   //e.preventDefault()
   setData([...data])
+  setChecked(!checked);
   console.log(data)
 }
 
@@ -76,7 +78,16 @@ const onHandleChangeHoraFim = (e, index)=>{
   setData([...data,[ListHrFim]])
 
 }
+const check = (id)=>{
+  const changeDone = name.map((info)=> {
+    if(info.id === id){
+      return{...info, done: !info.done}
+    }
+    return info;
+  })
+  setName(changeDone)
 
+}
 
 //console.log(data)
 
@@ -114,6 +125,7 @@ const onHandleChangeHoraFim = (e, index)=>{
             data={data}
             onHandleChange={onHandleChangeHorainicio}
             onHandleChange2={onHandleChangeHoraFim}
+            check={check}
             />
             )
           )

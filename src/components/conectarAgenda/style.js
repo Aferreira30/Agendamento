@@ -88,7 +88,7 @@ gap:16px;
         font-size: 16px;
         line-height: 25.6px;
         color: ${({theme})=>theme.colors.gray[100]};
-        width: 110px;
+        width: 150px;
     }
     a{
       text-decoration: none;
