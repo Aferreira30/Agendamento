@@ -1,11 +1,13 @@
-import { Container,ContainerQuase,FormQuase,DateList } from "./style";
+import { Container,ContainerQuase,FormQuase } from "./style";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Agendamento from "./datas";
+import axios from "axios"
 
 
 export default function Quaselá() {
-const [name, setName] = useState(
+
+const [name] = useState(
  [ {
     dia:"Segunda-feira",
     id:1
@@ -29,10 +31,7 @@ const [name, setName] = useState(
     id:7
   },]
 )
-
 const [data, setData]=useState([{}])
-
-
 const [horainicio,setHorainicio]=useState([{
   hora_inicio:0
 }]);
@@ -41,10 +40,14 @@ const [ horafim,setHorafim]=useState([{
 }]);
 
 function HandleSubmit(e){
-  //e.preventDefault()
+  e.preventDefault()
   setData([...data])
-  setChecked(!checked);
-  console.log(data)
+  //console.log(data)
+  axios.post("http://localhost:5000/data",data).then(resp => {
+    console.log(resp);
+  }).catch(error => {
+    console.log(error)
+  })
 }
 
 const onHandleChangeHorainicio = (e, index)=>{
@@ -78,18 +81,8 @@ const onHandleChangeHoraFim = (e, index)=>{
   setData([...data,[ListHrFim]])
 
 }
-const check = (id)=>{
-  const changeDone = name.map((info)=> {
-    if(info.id === id){
-      return{...info, done: !info.done}
-    }
-    return info;
-  })
-  setName(changeDone)
 
-}
 
-//console.log(data)
 
 
   return (
@@ -114,7 +107,7 @@ const check = (id)=>{
           </div>
         </div>
       </ContainerQuase>
-    <FormQuase> 
+    <FormQuase > 
       <div className="contInputs">
       {
         name.map(
@@ -125,7 +118,9 @@ const check = (id)=>{
             data={data}
             onHandleChange={onHandleChangeHorainicio}
             onHandleChange2={onHandleChangeHoraFim}
-            check={check}
+            Data={data}       
+            SetData={setData}
+    
             />
             )
           )

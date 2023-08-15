@@ -8,8 +8,10 @@ const [checked, setChecked]=useState(false);
 const onChecked = (e)=>{
   e.preventDefault();
   setChecked(!checked);
-  console.log(checked)
+
 }
+
+
   return (
     <DateList>
       <li key={dia}> 
@@ -26,8 +28,8 @@ const onChecked = (e)=>{
           <p>{dia}</p>
         </div>
         <div className="contHrs" >
-          <input type="text" name={dia} id="hora_inicio" onChange={onHandleChange}/>
-          <input type="text" name={dia} id="hora_fim" onChange={onHandleChange2}/>
+          <input type="text" name={dia} id="hora_inicio" onChange={event => onHandleChange(event)}/>
+          <input type="text" name={dia} id="hora_fim" onChange={event => onHandleChange2(event)}/>
         </div>
       </li>
   </DateList>
